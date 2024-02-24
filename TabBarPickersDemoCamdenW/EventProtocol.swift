@@ -6,7 +6,7 @@ public var debug = false
 // Define a blueprint that our tasks, blocks, and days can conform to
 protocol Event {
     var id: Int { get set }
-    var title: String { get set }
+    var title: String? { get set }
     var duration: TimeInterval { get }
 }
 

@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" id="R17-Wo-P8u">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="todoCell" id="R17-Wo-P8u">
                                 <rect key="frame" x="0.0" y="50" width="430" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R17-Wo-P8u" id="NSg-y7-bKc">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="386" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -65,7 +65,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj2-kS-b77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="1501"/>
+            <point key="canvasLocation" x="1261" y="1385"/>
         </scene>
         <!--New-->
         <scene sceneID="gvN-pu-6Lh">
@@ -105,6 +105,9 @@
                                             <segment title="Medium"/>
                                             <segment title="Large"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="sizeControlTapped:" destination="qc3-vQ-vWZ" eventType="valueChanged" id="YQO-sP-XZz"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="awS-Yf-eJ6">
                                         <rect key="frame" x="0.0" y="109" width="390" height="40"/>
@@ -120,6 +123,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="ZOm-gQ-u6a"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="startDatePicker:" destination="qc3-vQ-vWZ" eventType="valueChanged" id="jfw-RY-3eX"/>
+                                                </connections>
                                             </datePicker>
                                         </subviews>
                                         <constraints>
@@ -142,6 +148,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="IUl-t6-fze"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="dueDatePicker:" destination="qc3-vQ-vWZ" eventType="valueChanged" id="35V-8Z-hVL"/>
+                                                </connections>
                                             </datePicker>
                                         </subviews>
                                         <constraints>
@@ -172,6 +181,9 @@
                                                     <segment title="🟨"/>
                                                     <segment title="🔺"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="difficultyControlTapped:" destination="qc3-vQ-vWZ" eventType="valueChanged" id="bXy-zy-FPM"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <constraints>
@@ -199,6 +211,9 @@
                                                     <segment title="🟨"/>
                                                     <segment title="🔺"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="priorityControlTapped:" destination="qc3-vQ-vWZ" eventType="valueChanged" id="M8X-RJ-o8Z"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <constraints>
@@ -225,6 +240,9 @@
                                                     </children>
                                                 </menu>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="categoryMenuTapped:" destination="qc3-vQ-vWZ" eventType="touchUpInside" id="VGq-dU-SIf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -258,10 +276,13 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button" buttonSize="large"/>
+                                <connections>
+                                    <action selector="newTaskButtonTapped:" destination="qc3-vQ-vWZ" eventType="touchUpInside" id="zeT-E2-bvd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JIu-7m-1cM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fIm-Yd-RBm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JIu-7m-1cM" secondAttribute="leading" constant="20" id="03H-ND-DJ4"/>
                             <constraint firstItem="JIu-7m-1cM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fIm-Yd-RBm" secondAttribute="trailing" constant="20" id="0hI-NF-Qf2"/>
@@ -276,6 +297,22 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="New" image="plus.circle.fill" catalog="system" id="0q3-I6-ouW"/>
+                    <connections>
+                        <outlet property="categoryButtonMenu" destination="5du-D3-yim" id="7li-op-s1O"/>
+                        <outlet property="categoryLabel" destination="bU3-bm-ZWX" id="BbS-Qa-vUV"/>
+                        <outlet property="difficultyControl" destination="73K-PK-G4E" id="O1x-8Y-9Bp"/>
+                        <outlet property="difficultyLabel" destination="nSo-Sg-vgH" id="TAB-SR-JgO"/>
+                        <outlet property="dueDatePicker" destination="kWw-tc-bm5" id="78f-oc-5tr"/>
+                        <outlet property="dueLabel" destination="hkA-Zb-wWi" id="HfN-ac-o9c"/>
+                        <outlet property="newTaskButton" destination="3zN-ZM-wp2" id="qXg-6h-xWZ"/>
+                        <outlet property="notesTextView" destination="upS-6g-jTe" id="OaE-QG-Dy2"/>
+                        <outlet property="priorityControl" destination="sK7-cP-9qc" id="ztY-g9-cUm"/>
+                        <outlet property="priorityLabel" destination="5tq-sr-Xze" id="G0x-2H-laN"/>
+                        <outlet property="sizeControl" destination="ZVV-4Y-daA" id="rkG-e2-q7D"/>
+                        <outlet property="startDatePicker" destination="Ahv-p7-RaH" id="u1l-3l-SNo"/>
+                        <outlet property="startLabel" destination="rFa-hs-Qrm" id="qif-Ug-J94"/>
+                        <outlet property="titleTextField" destination="HAU-gu-fzT" id="ysF-hq-dOY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pkp-Tf-cbv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,6 +345,9 @@
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

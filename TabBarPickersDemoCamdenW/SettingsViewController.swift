@@ -26,7 +26,7 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
         tableView.reloadRows(at: [indexPath], with: .automatic)
-        cell.textLabel?.text = "Test"
+        cell.textLabel?.text = "Settings item 1"
         return cell
     }
 

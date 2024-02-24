@@ -20,7 +20,10 @@ class TasksViewController: UITableViewController {
         // Do any additional setup after loading the view.
         todos.append(firstToDo)
         for todo in todos {
-            print("Displaying to do: \(todo.title)")
+            guard todo.title != nil else {
+                return
+            }
+            let title = todo.title
         }
     }
     
@@ -36,7 +39,7 @@ class TasksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
         tableView.reloadRows(at: [indexPath], with: .automatic)
-        cell.textLabel?.text = "\(todos[indexPath.row].title) \(todos[indexPath.row].id)"
+        cell.textLabel?.text = "\(todos[indexPath.row].title ?? "New Task") \(todos[indexPath.row].id)"
         return cell
     }
 }

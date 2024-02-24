@@ -13,7 +13,7 @@ class ToDo: Event {
     
     // Define static properties
     var id: Int
-    var title: String
+    var title: String?
     var start: Date?
     var due: Date?
     var size: Size
@@ -56,7 +56,7 @@ class ToDo: Event {
     }
 
     // Initialize the static properties
-    init(id: Int, title: String, start: Date? = nil, due: Date?, size: Size, priority: Priority, difficulty: Difficulty, category: String? = nil, notes: String? = nil) {
+    init(id: Int, title: String?, start: Date? = nil, due: Date?, size: Size, priority: Priority, difficulty: Difficulty, category: String? = nil, notes: String? = nil) {
         self.id = id
         self.title = title
         self.start = start
